@@ -1,0 +1,9 @@
+streamlit>=1.37
+chromadb>=0.5
+sentence-transformers>=3.0
+groq>=0.11
+torch>=2.0
+transformers>=4.40
+safetensors>=0.8.0
+# optional – PDF extraction
+# docling
