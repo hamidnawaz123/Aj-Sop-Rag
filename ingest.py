@@ -28,7 +28,8 @@ def build_index(md_path: Path = C.DATA_PATH,
         client.delete_collection(C.COLLECTION)
     except Exception:
         pass
-    col = client.create_collection(C.COLLECTION, metadata={"hnsw:space": "cosine"})
+    # Reacquire the collection after resetting it so Chroma uses a live handle.
+    col = client.get_or_create_collection(C.COLLECTION, metadata={"hnsw:space": "cosine"})
 
     total, step = len(chunks), C.EMBED_BATCH
     for i in range(0, total, step):
